@@ -41,33 +41,42 @@
 
 input {
     position: absolute;
-    height: 60px;
-    width: 110px;
+    height: 67px;
+    width: 85px;
     appearance: none;
     cursor: pointer;
+    z-index: 100;
 }
 
 input:checked ~ .varetas {
     .vareta1 {
-        animation: 
-            transicao1-vareta1 2s forwards;
+        animation: transicao-vareta1 0.7s forwards;
     }
 
     .vareta2 {
-        animation: 
-            transicao1-vareta2 1s forwards;
-        
+        animation: transicao-vareta2 0.35s forwards;
     }
 
     .vareta3 {
-        animation: 
-            transicao1-vareta3 2s forwards;
+        animation: transicao-vareta3 0.7s forwards;
     }
 }
 
-/* VARETA1 */
+input:not(:checked) ~ .varetas {
+    .vareta1 {
+        animation: transicao-reversa-vareta1 0.7s forwards;
+    }
 
-@keyframes transicao1-vareta1 {
+    .vareta2 {
+        animation: transicao-reversa-vareta2 0.7s forwards;
+    }
+
+    .vareta3 {
+        animation: transicao-reversa-vareta3 0.7s forwards;
+    }
+}
+
+@keyframes transicao-vareta1 {
     0% {
         transform: translateY(0%) rotate(0deg);
     }
@@ -81,9 +90,21 @@ input:checked ~ .varetas {
     }
 }
 
-/* VARETA2 */
+@keyframes transicao-reversa-vareta1 {
+    0% {
+        transform: translateY(23px) rotate(135deg);
+    }
 
-@keyframes transicao1-vareta2 {
+    50% {
+        transform: translateY(23px) rotate(0deg);
+    }
+
+    100% {
+        transform: translateY(0%) rotate(0deg);
+    }
+}
+
+@keyframes transicao-vareta2 {
     0% {
         scale: 1;
         opacity: 1;
@@ -95,9 +116,19 @@ input:checked ~ .varetas {
     }
 }
 
-/* VARETA3 */
+@keyframes transicao-reversa-vareta2 {
+    0%, 50% {
+        scale: 0;
+        opacity: 0;
+    }
 
-@keyframes transicao1-vareta3 {
+    100% {
+        scale: 1;
+        opacity: 1;
+    }
+}
+
+@keyframes transicao-vareta3 {
     0% {
         transform: translateY(0%) rotate(0deg);
     }
@@ -108,5 +139,19 @@ input:checked ~ .varetas {
 
     100% {
         transform: translateY(-23px) rotate(135deg);
+    }
+}
+
+@keyframes transicao-reversa-vareta3 {
+    0% {
+        transform: translateY(-23px) rotate(-135deg);
+    }
+
+    50% {
+        transform: translateY(-23px) rotate(0deg);
+    }
+
+    100% {
+        transform: translateY(0%) rotate(0deg);
     }
 }
